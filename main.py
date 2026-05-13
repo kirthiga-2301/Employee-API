@@ -24,6 +24,10 @@ def create_employee(employee: EmployeeCreate):
         }
     }
 
+@app.get("/employees")
+def get_all_employees():
+    return db.get_all_employees()
+
 @app.get("/employees/{employee_id}")
 def get_employee(employee_id: int):
     employee = db.get_employee_by_id(employee_id)

@@ -5,34 +5,38 @@ import os
 # Load connection settings from .env
 load_dotenv()
 
-# Use Local MongoDB URL
 MONGO_URL = os.getenv("MONGO_URL", "mongodb://localhost:27017/")
 
 try:
-    # Connect to Local MongoDB
+    # Connect to MongoDB
     client = MongoClient(MONGO_URL)
     db = client["employee_db"]
     collection = db["employees"]
     
-    # Check if connection is successful
+    # Check connection
     client.server_info()
-    print("✅ Local MongoDB is connected and working!")
+    
+    # Check if it's local or cloud
+    if "localhost" in MONGO_URL or "127.0.0.1" in MONGO_URL:
+        print("✅ Local MongoDB is connected and working!")
+    else:
+        print("✅ MongoDB Atlas (Cloud) is connected and working!")
+        
 except Exception as e:
     print(f"❌ Connection error: {e}")
 
 def save_employee(name: str, role: str, city: str):
-    """Saves a new employee to the local database"""
+    """Saves a new employee to the database"""
     employee_data = {
         "name": name,
         "role": role,
         "city": city
     }
     collection.insert_one(employee_data)
-    # Returns the count as a simple ID
     return collection.count_documents({})
 
 def get_employee_by_id(emp_id: int):
-    """Fetches an employee from the local database by ID"""
+    """Fetches an employee from the database by ID"""
     cursor = collection.find().skip(emp_id - 1).limit(1)
     doc = next(cursor, None)
     
@@ -46,7 +50,7 @@ def get_employee_by_id(emp_id: int):
     return None
 
 def get_all_employees():
-    """Returns a list of all employees in the local database"""
+    """Returns a list of all employees in the database"""
     employees = []
     cursor = collection.find()
     for i, doc in enumerate(cursor, 1):
