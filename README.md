@@ -22,29 +22,3 @@ A professional Employee Management API built with **FastAPI** and **MongoDB Atla
 *   `.env`: Secret environment variables (Cloud Connection String).
 *   `.vscode/`: Custom VS Code settings for environment sync.
 
-##  How to Run
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/kirthiga-2301/Employee-API.git
-   ```
-2. **Setup Virtual Environment**:
-   ```bash
-   python -m venv venv
-   .\venv\Scripts\activate
-   ```
-3. **Install Dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. **Configure Database**:
-   Create a `.env` file and add your MongoDB Atlas URL:
-   ```env
-   MONGO_URL=mongodb+srv://<username>:<password>@cluster0.xxx.mongodb.net/
-   ```
-5. **Start the Server**:
-   ```bash
-   python -m uvicorn main:app --reload
-   ```
-
----
-Built with ❤️ by Kirthiga
