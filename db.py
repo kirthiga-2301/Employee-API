@@ -2,30 +2,35 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 import os
 
-# Load variables from .env
+# Load connection link from .env file
 load_dotenv()
 
 MONGO_URL = os.getenv("MONGO_URL", "mongodb://localhost:27017/")
 
-# Connect to MongoDB
-client = MongoClient(MONGO_URL)
-db = client["employee_db"]
-collection = db["employees"]
+try:
+    # Set up the connection
+    client = MongoClient(MONGO_URL, serverSelectionTimeoutMS=5000)
+    db = client["employee_db"]
+    collection = db["employees"]
+    
+    # Check if connection is successful
+    client.server_info()
+    print("✅ Connected to MongoDB successfully!")
+except Exception as e:
+    print(f"❌ Error connecting to MongoDB: {e}")
 
 def save_employee(name: str, role: str, city: str):
-    # MongoDB stores data as documents
+    """Saves a new employee and returns the total count as their ID"""
     employee_data = {
         "name": name,
         "role": role,
         "city": city
     }
-    result = collection.insert_one(employee_data)
-    # We use the document count as a simple ID for your assignment practice
+    collection.insert_one(employee_data)
     return collection.count_documents({})
 
 def get_employee_by_id(emp_id: int):
-    # Since MongoDB uses ObjectIds, but your assignment uses numeric IDs, 
-    # we simulate the ID lookup by skipping to the Nth document
+    """Finds an employee by skipping to their position in the list"""
     cursor = collection.find().skip(emp_id - 1).limit(1)
     doc = next(cursor, None)
     
@@ -37,3 +42,16 @@ def get_employee_by_id(emp_id: int):
             "city": doc["city"]
         }
     return None
+
+def get_all_employees():
+    """Returns a list of all employees in the database"""
+    employees = []
+    cursor = collection.find()
+    for i, doc in enumerate(cursor, 1):
+        employees.append({
+            "employee_id": i,
+            "name": doc["name"],
+            "role": doc["role"],
+            "city": doc["city"]
+        })
+    return employees
