@@ -1,16 +1,54 @@
-# Employee Records Project
+# 🚀 FastAPI Employee Management API
 
-This is a simple system I built to keep track of employee information. Imagine it like a digital notebook where you can save, look up, and list everyone who works at a company.
+A professional Employee Management API built with **FastAPI** and **MongoDB Atlas (Cloud)**. This project demonstrates a full-stack backend flow with virtual environment isolation and cloud database integration.
 
-### What can you do with this?
-- **Add new people**: You can save an employee's name, their job title (role), and the city they live in.
-- **See everyone**: You can get a full list of all the employees you've saved.
-- **Find one person**: You can search for a specific person by using their ID number.
+## ✨ Features
+*   **Full CRUD Support**: Create, Read, and List employees.
+*   **FastAPI Framework**: High performance, easy to use, and auto-generated Swagger UI.
+*   **MongoDB Atlas**: Live cloud database for secure and scalable data storage.
+*   **Pydantic Models**: Robust data validation and serialization.
+*   **Virtual Environment**: Fully isolated project environment using `venv`.
 
-### How to set it up:
-1.  Make sure you have Python installed.
-2.  Install the project tools by running: `pip install -r requirements.txt`
-3.  Make sure your MongoDB database is running.
-4.  Start the program by running: `python -m uvicorn main:app --reload`
+## 🛠️ Technology Stack
+*   **Backend**: Python, FastAPI
+*   **Database**: MongoDB Atlas (NoSQL)
+*   **Environment**: Python Virtual Environment (venv)
+*   **Testing**: Postman, Swagger UI
 
-Once the program is running, it works behind the scenes to handle all the employee data!
+## 📁 Project Structure
+*   `main.py`: Core API endpoints and server configuration.
+*   `db.py`: Database connection logic and CRUD operations.
+*   `models.py`: Pydantic schemas for data validation.
+*   `.env`: Secret environment variables (Cloud Connection String).
+*   `.vscode/`: Custom VS Code settings for environment sync.
+
+## 🚀 How to Run
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/kirthiga-2301/Employee-API.git
+   ```
+2. **Setup Virtual Environment**:
+   ```bash
+   python -m venv venv
+   .\venv\Scripts\activate
+   ```
+3. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. **Configure Database**:
+   Create a `.env` file and add your MongoDB Atlas URL:
+   ```env
+   MONGO_URL=mongodb+srv://<username>:<password>@cluster0.xxx.mongodb.net/
+   ```
+5. **Start the Server**:
+   ```bash
+   python -m uvicorn main:app --reload
+   ```
+
+## 🧪 API Documentation
+Once the server is running, visit:
+👉 `http://127.0.0.1:8000/docs` to see the interactive Swagger UI.
+
+---
+Built with ❤️ by Kirthiga
