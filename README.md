@@ -46,9 +46,8 @@ A professional Employee Management API built with **FastAPI** and **MongoDB Atla
    python -m uvicorn main:app --reload
    ```
 
-## 🧪 API Documentation
+##  API Documentation
 Once the server is running, visit:
-👉 `http://127.0.0.1:8000/docs` to see the interactive Swagger UI.
+ `http://127.0.0.1:8000/docs` to see the interactive Swagger UI.
 
----
-Built with ❤️ by Kirthiga
+
