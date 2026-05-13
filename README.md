@@ -1,28 +1,28 @@
-# 🚀 FastAPI Employee Management API
+ ## Fast API Employee Management API
 
 A professional Employee Management API built with **FastAPI** and **MongoDB Atlas (Cloud)**. This project demonstrates a full-stack backend flow with virtual environment isolation and cloud database integration.
 
-## ✨ Features
+##  Features
 *   **Full CRUD Support**: Create, Read, and List employees.
 *   **FastAPI Framework**: High performance, easy to use, and auto-generated Swagger UI.
 *   **MongoDB Atlas**: Live cloud database for secure and scalable data storage.
 *   **Pydantic Models**: Robust data validation and serialization.
 *   **Virtual Environment**: Fully isolated project environment using `venv`.
 
-## 🛠️ Technology Stack
+##  Technology Stack
 *   **Backend**: Python, FastAPI
 *   **Database**: MongoDB Atlas (NoSQL)
 *   **Environment**: Python Virtual Environment (venv)
 *   **Testing**: Postman, Swagger UI
 
-## 📁 Project Structure
+##  Project Structure
 *   `main.py`: Core API endpoints and server configuration.
 *   `db.py`: Database connection logic and CRUD operations.
 *   `models.py`: Pydantic schemas for data validation.
 *   `.env`: Secret environment variables (Cloud Connection String).
 *   `.vscode/`: Custom VS Code settings for environment sync.
 
-## 🚀 How to Run
+##  How to Run
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/kirthiga-2301/Employee-API.git
