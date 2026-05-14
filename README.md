@@ -1,50 +1,49 @@
-# 🚀 FastAPI Employee Management API
+# Employee Management API (Capstone Project)
 
-A professional Employee Management API built with **FastAPI** and **MongoDB Atlas (Cloud)**. This project demonstrates a full-stack backend flow with virtual environment isolation and cloud database integration.
+This is a FastAPI-based Employee Management API built as a Capstone project. It allows for creating, fetching, and filtering employee records stored in MongoDB.
 
-## ✨ Features
-*   **Full CRUD Support**: Create, Read, and List employees.
-*   **FastAPI Framework**: High performance, easy to use, and auto-generated Swagger UI.
-*   **MongoDB Atlas**: Live cloud database for secure and scalable data storage.
-*   **Pydantic Models**: Robust data validation and serialization.
-*   **Virtual Environment**: Fully isolated project environment using `venv`.
+## Features
+- **Proper Project Structure**: Organized into `app/` modules.
+- **Pydantic Models**: Data validation and serialization.
+- **MongoDB Integration**: Persistent storage.
+- **Endpoints**:
+  - `POST /employees`: Create a new employee.
+  - `GET /employees/{id}`: Fetch specific employee details with derived salary category.
+  - `GET /employees`: Filter employees by department via query parameters.
+- **Exception Handling**: Proper `HTTPException` usage for error scenarios (400, 404).
 
-## 🛠️ Technology Stack
-*   **Backend**: Python, FastAPI
-*   **Database**: MongoDB Atlas (NoSQL)
-*   **Environment**: Python Virtual Environment (venv)
-*   **Testing**: Postman, Swagger UI
+## Project Structure
+```text
+Employee/
+    app/
+        __init__.py
+        main.py
+        models.py
+        database.py
+        routes.py
+    requirements.txt
+    README.md
+    .gitignore
+    postman_collection.json
+```
 
-## 📁 Project Structure
-*   `main.py`: Core API endpoints and server configuration.
-*   `db.py`: Database connection logic and CRUD operations.
-*   `models.py`: Pydantic schemas for data validation.
-*   `.env`: Secret environment variables (Cloud Connection String).
-*   `.vscode/`: Custom VS Code settings for environment sync.
-
-## 🚀 How to Run
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/kirthiga-2301/Employee-API.git
-   ```
-2. **Setup Virtual Environment**:
+## How to Run
+1. **Setup Environment**:
    ```bash
    python -m venv venv
-   .\venv\Scripts\activate
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
-3. **Install Dependencies**:
+2. **Install Dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
-4. **Configure Database**:
-   Create a `.env` file and add your MongoDB Atlas URL:
-   ```env
-   MONGO_URL=mongodb+srv://<username>:<password>@cluster0.xxx.mongodb.net/
-   ```
-5. **Start the Server**:
+3. **Configure MongoDB**:
+   Ensure MongoDB is running locally or provide a `MONGO_URL` in the `.env` file.
+4. **Start the Application**:
    ```bash
-   python -m uvicorn main:app --reload
+   uvicorn app.main:app --reload
    ```
 
----
-Built with ❤️ by Kirthiga
+## Testing
+- **Swagger UI**: Access `http://127.0.0.1:8000/docs` to test via the interactive UI.
+- **Postman**: Import the `postman_collection.json` file into Postman.
