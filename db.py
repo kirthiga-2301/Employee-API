@@ -23,7 +23,7 @@ try:
         print("✅ MongoDB Atlas (Cloud) is connected and working!")
         
 except Exception as e:
-    print(f"❌ Connection error: {e}")
+    print(f" Connection error: {e}")
 
 def save_employee(name: str, role: str, city: str):
     """Saves a new employee to the database"""
@@ -61,3 +61,28 @@ def get_all_employees():
             "city": doc["city"]
         })
     return employees
+
+def update_employee(emp_id: int, name: str, role: str, city: str):
+    """Updates an existing employee by ID"""
+    # First, find the document to get its _id based on our sequence logic
+    cursor = collection.find().skip(emp_id - 1).limit(1)
+    doc = next(cursor, None)
+    
+    if doc:
+        collection.update_one(
+            {"_id": doc["_id"]},
+            {"$set": {"name": name, "role": role, "city": city}}
+        )
+        return True
+    return False
+
+def delete_employee(emp_id: int):
+    """Deletes an employee from the database by ID"""
+    # Find the document to get its _id based on our sequence logic
+    cursor = collection.find().skip(emp_id - 1).limit(1)
+    doc = next(cursor, None)
+    
+    if doc:
+        collection.delete_one({"_id": doc["_id"]})
+        return True
+    return False
